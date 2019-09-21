@@ -19,6 +19,25 @@
   color: white;
 }
 
+.Form p,.Form input {
+  display:inline-block;
+  height:20px;
+  width:200px;
+  box-sizing: border-box;
+  border: 20px;
+  margin: 5px;
+}
+
+ul li {
+  list-style-type: none;
+  border: solid 3px;
+}
+
+#title {
+  color:red;
+  border-style: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
