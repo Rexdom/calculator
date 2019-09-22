@@ -1,22 +1,13 @@
-import React,{useState, useEffect, useCallBack} from 'react';
+import React,{useState, useEffect} from 'react';
 
 function Form(props) {
     const [moneyPaid,setMoneyPaid]=useState(0);
     const [moneyResp,setMoneyResp]=useState(0);
 
-
-    const update = useCallBack(()=>{
-        props.addRecord(props.user,moneyPaid,moneyResp)
-    },[moneyPaid,moneyResp]);
-
     useEffect(()=>{
-        update();
-    },[update]);
-
-    function changeVal(type,e) {
-        if (type==="paid") setMoneyPaid(e.target.value);
-        if (type==="resp") setMoneyResp(e.target.value);
-    };
+        props.addRecord(props.user,moneyPaid,moneyResp);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[moneyPaid,moneyResp]);
 
     return(
     <li>
@@ -24,13 +15,13 @@ function Form(props) {
         <input 
             type="number"
             value={moneyPaid}
-            onChange={e=>changeVal('paid',e)}
+            onChange={e=>setMoneyPaid(e.target.value)}
             placeholder="Money Paid" 
         />
         <input 
             type="number" 
             value={moneyResp}
-            onChange={e=>changeVal('resp',e)}
+            onChange={e=>setMoneyResp(e.target.value)}
             placeholder="Money Responsible" 
         />
     </li>
