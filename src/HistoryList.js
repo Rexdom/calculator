@@ -9,6 +9,8 @@ function HistoryList(props) {
                             key={index}
                             record={record}
                             index={index}
+                            onModify={props.onModify}
+                            selected={props.selected===index?true:false}
                         />
             )}
         </aside>

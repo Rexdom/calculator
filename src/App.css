@@ -23,6 +23,43 @@
   display:flex;
 }
 
+aside {
+  position:relative;
+  left:10%;
+}
+
+.record {
+  display:flex;
+  width:150px;
+  background-color: grey;
+  justify-content: center;
+}
+
+.record-box {
+  height:50px;
+  width:auto;
+  display:flex;
+}
+.record:hover {
+  font-weight:500;
+  cursor:pointer;
+}
+.record.selected {
+  background-color: rgb(63, 60, 60);
+  border:solid 3px black;
+}
+
+.delete {
+  font-weight:800;
+  color:red;
+  width:50px;
+  background-color: white;
+  position:relative;
+  left:20px;
+  box-sizing: border-box;
+  border:solid 5px black;
+}
+
 .Form p,.Form input {
   display:inline-block;
   height:20px;

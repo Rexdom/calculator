@@ -1,27 +1,22 @@
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 
 function Form(props) {
-    const [moneyPaid,setMoneyPaid]=useState(0);
-    const [moneyResp,setMoneyResp]=useState(0);
-
     useEffect(()=>{
-        props.addRecord(props.user,moneyPaid,moneyResp);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[moneyPaid,moneyResp]);
-
+        props.addRecord(props.user,props.moneyPaid,props.moneyResp)
+    },[])
     return(
     <li>
         <p>{props.user}</p>
         <input 
             type="number"
-            value={moneyPaid}
-            onChange={e=>setMoneyPaid(e.target.value)}
+            value={props.moneyPaid}
+            onChange={e=>props.addRecord(props.user,e.target.value,props.moneyResp)}
             placeholder="Money Paid" 
         />
         <input 
             type="number" 
-            value={moneyResp}
-            onChange={e=>setMoneyResp(e.target.value)}
+            value={props.moneyResp}
+            onChange={e=>props.addRecord(props.user,props.moneyPaid,e.target.value)}
             placeholder="Money Responsible" 
         />
     </li>
