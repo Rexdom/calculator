@@ -30,9 +30,11 @@ aside {
 
 .record {
   display:flex;
+  box-sizing: border-box;
   width:150px;
-  background-color: grey;
+  background-color: rgb(67, 71, 71);
   justify-content: center;
+  border:solid 3px black;
 }
 
 .record-box {
@@ -45,8 +47,7 @@ aside {
   cursor:pointer;
 }
 .record.selected {
-  background-color: rgb(63, 60, 60);
-  border:solid 3px black;
+  background-color: grey;
 }
 
 .delete {

@@ -3,7 +3,8 @@ import React,{useEffect} from 'react';
 function Form(props) {
     useEffect(()=>{
         props.addRecord(props.user,props.moneyPaid,props.moneyResp)
-    },[])
+    },[]);
+
     return(
     <li>
         <p>{props.user}</p>
