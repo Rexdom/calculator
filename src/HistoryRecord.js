@@ -8,7 +8,11 @@ function HistoryRecord(props) {
     };
 
     function onClick(){
-         props.onModify(props.index)
+        props.onModify(props.index)
+    };
+
+    function onDelete(){
+        props.onDelete(props.index)
     };
 
     return(
@@ -17,7 +21,7 @@ function HistoryRecord(props) {
             onClick={onClick}>
                 total:{sum}
             </div>
-            <div className="delete">x</div>
+            <div className="delete" onClick={onDelete}>x</div>
         </div>
         
     );

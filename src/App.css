@@ -59,6 +59,7 @@ aside {
   left:20px;
   box-sizing: border-box;
   border:solid 5px black;
+  cursor:pointer;
 }
 
 .Form p,.Form input {

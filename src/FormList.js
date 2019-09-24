@@ -31,6 +31,14 @@ function FormList(props) {
         setRecord({...recordList[i]});
     };
 
+    function onDelete(i) {
+        setNumOfRecord(recordList.length-1);
+        setRecordList(recordList.filter(function(r,index){
+            return index !== i 
+        }));
+        setRecord({});
+    };
+
     function onResult(e) {
         e.preventDefault();
         var sum=0;
@@ -38,7 +46,9 @@ function FormList(props) {
         const result = (()=> {
             for (let u=0;u<props.list.length;u++) {
                 for (let i=0;i<recordList.length;i++) {
-                    sum+=recordList[i][props.list[u]].paid-recordList[i][props.list[u]].resp
+                    let paid = recordList[i][props.list[u]]?recordList[i][props.list[u]].paid:0;
+                    let resp = recordList[i][props.list[u]]?recordList[i][props.list[u]].resp:0;
+                    sum+=paid-resp;
                 }
                 obj[props.list[u]]=sum;
                 sum=0;
@@ -61,6 +71,7 @@ function FormList(props) {
                         <Form
                             key={user}
                             user={user} 
+                            recordList={recordList}
                             addRecord={addRecord}
                             moneyPaid={record[user]?record[user].paid:0}
                             moneyResp={record[user]?record[user].resp:0}
@@ -76,6 +87,7 @@ function FormList(props) {
             <HistoryList 
                 list={recordList}
                 onModify={onModify}
+                onDelete={onDelete}
                 selected={numOfRecord}
             />
         </div>

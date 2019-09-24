@@ -10,6 +10,7 @@ function HistoryList(props) {
                             record={record}
                             index={index}
                             onModify={props.onModify}
+                            onDelete={props.onDelete}
                             selected={props.selected===index?true:false}
                         />
             )}

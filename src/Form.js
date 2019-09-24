@@ -1,11 +1,7 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 
 function Form(props) {
-    useEffect(()=>{
-        props.addRecord(props.user,props.moneyPaid,props.moneyResp)
-    },[]);
-
-    return(
+   return(
     <li>
         <p>{props.user}</p>
         <input 
