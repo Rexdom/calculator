@@ -4,36 +4,43 @@ import HistoryList from './HistoryList';
 import AddButton from './AddButton';
 
 function FormList(props) {
-    const [recordList,setRecordList]=useState([]);
     const [record,setRecord]=useState({});
-    const [numOfRecord,setNumOfRecord]=useState(0);
+    const [numOfRecord,setNumOfRecord]=useState(props.recordList.length);
 
-    function addRecord(name,mp=0,mr=0) {
+    function addRecord(name,mp,mr) {
         setRecord(prevState=>{
-            return{...prevState,[name]:{paid:parseInt(mp),resp:parseInt(mr)}}
+            return{...prevState,[name]:{paid:mp,resp:mr}}
         });
     };
 
     function addNewRecord(i) {
-        if (i===recordList.length) {
-            setNumOfRecord(recordList.length+1);
+        if (i===props.recordList.length) {
+            setNumOfRecord(props.recordList.length+1);
         } else {
-            setNumOfRecord(recordList.length);
+            setNumOfRecord(props.recordList.length);
         }
-        let refRecordList=[...recordList];
+        let refRecordList=[...props.recordList];
         refRecordList[i]=record;
-        setRecordList(refRecordList);
+        Object.keys(record).forEach((user)=>{
+            if (isNaN(record[user].paid)) {
+                refRecordList[i][user].paid=0;
+            } else refRecordList[i][user].paid = parseInt(record[user].paid);
+            if (isNaN(record[user].resp)) {
+                refRecordList[i][user].resp=0;
+            } else refRecordList[i][user].resp = parseInt(record[user].resp);
+        })
+        props.setRecordList(refRecordList);
         setRecord({});
     };
 
     function onModify(i) {
         setNumOfRecord(i);
-        setRecord({...recordList[i]});
+        setRecord({...props.recordList[i]});
     };
 
     function onDelete(i) {
-        setNumOfRecord(recordList.length-1);
-        setRecordList(recordList.filter(function(r,index){
+        setNumOfRecord(props.recordList.length-1);
+        props.setRecordList(props.recordList.filter(function(r,index){
             return index !== i 
         }));
         setRecord({});
@@ -45,9 +52,9 @@ function FormList(props) {
         const obj={};
         const result = (()=> {
             for (let u=0;u<props.list.length;u++) {
-                for (let i=0;i<recordList.length;i++) {
-                    let paid = recordList[i][props.list[u]]?recordList[i][props.list[u]].paid:0;
-                    let resp = recordList[i][props.list[u]]?recordList[i][props.list[u]].resp:0;
+                for (let i=0;i<props.recordList.length;i++) {
+                    let paid = props.recordList[i][props.list[u]]?props.recordList[i][props.list[u]].paid:0;
+                    let resp = props.recordList[i][props.list[u]]?props.recordList[i][props.list[u]].resp:0;
                     sum+=paid-resp;
                 }
                 obj[props.list[u]]=sum;
@@ -55,7 +62,7 @@ function FormList(props) {
             }
             return obj
         })();
-        console.log(result);
+        props.onResult(result);
     };
 
     return(
@@ -70,8 +77,7 @@ function FormList(props) {
                     {props.list.map(user=>
                         <Form
                             key={user}
-                            user={user} 
-                            recordList={recordList}
+                            user={user}
                             addRecord={addRecord}
                             moneyPaid={record[user]?record[user].paid:0}
                             moneyResp={record[user]?record[user].resp:0}
@@ -85,7 +91,7 @@ function FormList(props) {
                 <button>Result</button>
             </form>
             <HistoryList 
-                list={recordList}
+                list={props.recordList}
                 onModify={onModify}
                 onDelete={onDelete}
                 selected={numOfRecord}

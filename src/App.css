@@ -25,13 +25,13 @@
 
 aside {
   position:relative;
-  left:10%;
+  left:5%;
 }
 
 .record {
   display:flex;
   box-sizing: border-box;
-  width:150px;
+  width:80%;
   background-color: rgb(67, 71, 71);
   justify-content: center;
   border:solid 3px black;
@@ -53,10 +53,10 @@ aside {
 .delete {
   font-weight:800;
   color:red;
-  width:50px;
+  width:40px;
   background-color: white;
   position:relative;
-  left:20px;
+  left:1%;
   box-sizing: border-box;
   border:solid 5px black;
   cursor:pointer;
@@ -65,9 +65,10 @@ aside {
 .Form p,.Form input {
   display:inline-block;
   height:20px;
-  width:100px;
+  width:30%;
   box-sizing: border-box;
-  border: 20px;
+  align-items: center;
+  border: 5px;
   margin: 5px;
 }
 

@@ -4,6 +4,7 @@ import HistoryRecord from './HistoryRecord';
 function HistoryList(props) {
     return(
         <aside>
+            <p>Records</p>
             {props.list.map((record,index)=>
                         <HistoryRecord 
                             key={index}
