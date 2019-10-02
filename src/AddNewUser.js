@@ -13,12 +13,13 @@ function AddNewUser(props) {
             <p>Please add all the names of your groupmates below to begin:</p>
             <form onSubmit={handleSubmit}>
                 <input 
+                    id="addUser"
                     type="text" 
                     value={name}
                     onChange={e => setName(e.target.value)}
                     placeholder="Name of your groupmate" 
                 />
-                <button>Add</button>
+                <button id="addUserButton">Add</button>
             </form>
         </>
     );

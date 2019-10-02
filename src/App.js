@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './Common.css';
 import AddNewUser from './AddNewUser';
 import FormList from './FormList';
 import Result from './Result';
