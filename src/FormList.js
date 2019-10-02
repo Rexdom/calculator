@@ -1,11 +1,13 @@
 import React,{useState} from 'react';
 import Form from './Form';
 import HistoryList from './HistoryList';
+import Error from './Error';
 import AddButton from './AddButton';
 
 function FormList(props) {
     const [record,setRecord]=useState({});
     const [numOfRecord,setNumOfRecord]=useState(props.recordList.length);
+    const [error,setError]=useState('none');
 
     function addRecord(name,mp,mr) {
         setRecord(prevState=>{
@@ -14,23 +16,33 @@ function FormList(props) {
     };
 
     function addNewRecord(i) {
-        if (i===props.recordList.length) {
-            setNumOfRecord(props.recordList.length+1);
-        } else {
-            setNumOfRecord(props.recordList.length);
-        }
-        let refRecordList=[...props.recordList];
-        refRecordList[i]=record;
+        let paidSum=0;
+        let respSum=0;
         Object.keys(record).forEach((user)=>{
-            if (isNaN(record[user].paid)) {
-                refRecordList[i][user].paid=0;
-            } else refRecordList[i][user].paid = parseInt(record[user].paid);
-            if (isNaN(record[user].resp)) {
-                refRecordList[i][user].resp=0;
-            } else refRecordList[i][user].resp = parseInt(record[user].resp);
-        })
-        props.setRecordList(refRecordList);
-        setRecord({});
+            paidSum+=parseInt(record[user].paid);
+            respSum+=parseInt(record[user].resp);
+        });
+        if (isNaN(paidSum)||isNaN(respSum)) {
+            setError('empty');
+        } else if (paidSum!==respSum) {
+            setError('unequal');
+            console.log(paidSum,respSum);
+        } else {
+            if (i===props.recordList.length) {
+                setNumOfRecord(props.recordList.length+1);
+            } else {
+                setNumOfRecord(props.recordList.length);
+            }
+            let refRecordList=[...props.recordList];
+            refRecordList[i]=record;
+            Object.keys(record).forEach((user)=>{
+                refRecordList[i][user].paid = parseInt(record[user].paid);
+                refRecordList[i][user].resp = parseInt(record[user].resp);
+            })
+            props.setRecordList(refRecordList);
+            setRecord({});
+            setError(false);
+        };
     };
 
     function onModify(i) {
@@ -88,6 +100,7 @@ function FormList(props) {
                     listIndex={numOfRecord} 
                     addNewRecord={addNewRecord}
                 />
+                <Error error={error}/>
                 <button>Result</button>
             </form>
             <HistoryList 
