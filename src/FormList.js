@@ -79,8 +79,8 @@ function FormList(props) {
 
     return(
         <div className="content">
-            <form onSubmit={onResult}>
-                <ul className="Form">
+            <form className="Form" onSubmit={onResult}>
+                <ul>
                     <li id="title">
                         <p>Name</p>
                         <p>Money Paid</p>
