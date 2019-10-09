@@ -8,13 +8,11 @@ function Form(props) {
             type="number"
             value={props.moneyPaid}
             onChange={e=>props.addRecord(props.user,e.target.value,props.moneyResp)}
-            placeholder="Money Paid" 
         />
         <input 
             type="number" 
             value={props.moneyResp}
             onChange={e=>props.addRecord(props.user,props.moneyPaid,e.target.value)}
-            placeholder="Money Responsible" 
         />
     </li>
     );

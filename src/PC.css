@@ -1,3 +1,4 @@
+
 .App {
     text-align: center;
   }
@@ -9,19 +10,25 @@
   }
   
   .App-header {
-    background-color: #282c34;
+    background-color: #f0f0f0;
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    font-size: calc(10px + 1vmin);
+    font-weight: 600;
+    color: black;
   }
   
+  .description {
+    margin:0;
+  }
+
   .content {
     display:flex;
+    margin: 5px;
     width: 100vw;
     justify-content: center;
   }
@@ -31,9 +38,14 @@
       display:flex;
       flex-direction: column;
       align-items: center;
+      margin: 5px;
     }
+      .Form ul {
+        margin:0;
+        padding:0;
+      }
 
-      .Form li {
+      li {
         list-style-type: none;
       }
 
@@ -43,32 +55,50 @@
           width:10vw;
           font-size: 0.8em;
         }
+
+      .warning {
+        font-size: 0.7em;
+        margin:0;
+        color: red;
+      }
+
+      .button {
+        display:block;
+        width:80%;
+        margin:5px;
+      }
   
     aside {
       flex: 2;
-      background-color: grey;
-    }
-  
-    .record {
-      display:flex;
-      box-sizing: border-box;
-      width:80%;
-      background-color: rgb(67, 71, 71);
       justify-content: center;
+      background-color: whitesmoke;
       border:solid 3px black;
     }
     
     .record-box {
-      height:50px;
       width:auto;
       display:flex;
+      justify-content: center;
+      margin-bottom:5px;
     }
+
+    .record {
+      display:flex;
+      box-sizing: border-box;
+      width:70%;
+      font-weight:500;
+      justify-content: center;
+      margin: solid 5px black;
+    }
+
     .record:hover {
       font-weight:500;
       cursor:pointer;
     }
+
     .record.selected {
       background-color: grey;
+      margin: solid 5px black;
     }
     
     .delete {
@@ -76,8 +106,6 @@
       color:red;
       width:40px;
       background-color: white;
-      position:relative;
-      left:1%;
       box-sizing: border-box;
       border:solid 5px black;
       cursor:pointer;
@@ -90,5 +118,4 @@
     to {
       transform: rotate(360deg);
     }
-  }
-  
+}

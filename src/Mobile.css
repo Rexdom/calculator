@@ -1,18 +1,11 @@
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {  
   .content {
-    display:flex;
     flex-direction: column;
   }
 
-  #addUser {
-    width:70%;
+  .Form li *{
+    margin: 10px 5px;
+    width:25vw;
   }
 
-  #addUserButton {
-    width:25%;
-  }
-
-  .Form input {
-    width:100%;
-  }
 }

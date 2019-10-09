@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import logo from './logo.svg';
-import './Mobile.css';
 import './PC.css';
+import './Mobile.css';
 import AddNewUser from './AddNewUser';
 import FormList from './FormList';
 import Result from './Result';
@@ -11,6 +11,7 @@ function App() {
   const [recordList,setRecordList]=useState([]);
   const [result, setResult] = useState({});
   const [isResult, setIsResult] = useState(false);
+  const [error,setError]=useState('none');
   
   function addUser(user) {
     setUserList(preList=>[...preList,user])
@@ -29,6 +30,10 @@ function App() {
     setRecordList(list);
   }
 
+  function onError(error) {
+    setError(error);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -37,11 +42,13 @@ function App() {
           <Result result={result} onBack={onBack}/>
         ) : (
           <>
-            <AddNewUser onAdd={addUser}/>
+            <AddNewUser onAdd={addUser} userList={userList} setError={onError}/>
             <FormList 
               list={userList} 
               onResult={onResult} 
               recordList={recordList}
+              error={error}
+              setError={onError}
               setRecordList={changeRecordList}
             />
           </>

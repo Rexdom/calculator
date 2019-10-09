@@ -7,7 +7,6 @@ import AddButton from './AddButton';
 function FormList(props) {
     const [record,setRecord]=useState({});
     const [numOfRecord,setNumOfRecord]=useState(props.recordList.length);
-    const [error,setError]=useState('none');
 
     function addRecord(name,mp,mr) {
         setRecord(prevState=>{
@@ -23,9 +22,9 @@ function FormList(props) {
             respSum+=parseInt(record[user].resp);
         });
         if (isNaN(paidSum)||isNaN(respSum)) {
-            setError('empty');
+            props.setError('empty');
         } else if (paidSum!==respSum) {
-            setError('unequal');
+            props.setError('unequal');
             console.log(paidSum,respSum);
         } else {
             if (i===props.recordList.length) {
@@ -41,7 +40,7 @@ function FormList(props) {
             })
             props.setRecordList(refRecordList);
             setRecord({});
-            setError(false);
+            props.setError(false);
         };
     };
 
@@ -96,12 +95,12 @@ function FormList(props) {
                         />
                     )}
                 </ul>
+                <Error error={props.error}/>
                 <AddButton 
                     listIndex={numOfRecord} 
                     addNewRecord={addNewRecord}
                 />
-                <Error error={error}/>
-                <button>Result</button>
+                <button className="button">Result</button>
             </form>
             <HistoryList 
                 list={props.recordList}
