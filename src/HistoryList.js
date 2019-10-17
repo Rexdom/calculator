@@ -6,18 +6,13 @@ function HistoryList(props) {
     const [keyword,setKeyword] = useState('');
 
     useEffect(()=>{
-        setList(props.list)
-    },[props.list]);
-
-    function searchTags(e) {
-        setKeyword(e.target.value);
         setList(props.list.filter(function(record){
-            if (e.target.value.length===0)
+            if (keyword.length===0)
                 return record
             else 
-                return record.tag.slice(0,e.target.value.length)===e.target.value
+                return record.tag.slice(0,keyword.length)===keyword
         }));
-    };
+    },[props.list,keyword]);
 
     return(
         <aside>
@@ -27,19 +22,21 @@ function HistoryList(props) {
                 type="text" 
                 placeholder="tags filter"
                 value={keyword}
-                onChange={e=>searchTags(e)}
+                onChange={e=>setKeyword(e.target.value)}
             />
             <div className="records">
-                {list.map((record,index)=>
-                            <HistoryRecord 
-                                key={index}
-                                record={record}
-                                index={index}
-                                onModify={props.onModify}
-                                onDelete={props.onDelete}
-                                selected={props.selected===index?true:false}
-                            />
-                )}
+                {props.list.map((record,index)=>{
+                    if (list.includes(record)) 
+                        return <HistoryRecord 
+                            key={index}
+                            record={record}
+                            index={index}
+                            onModify={props.onModify}
+                            onDelete={props.onDelete}
+                            selected={props.selected===index?true:false}
+                        />
+                    else return null;
+                })}
             </div>
         </aside>
     );

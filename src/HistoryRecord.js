@@ -3,6 +3,7 @@ import React from 'react';
 function HistoryRecord(props) {
     let sum =0;
     
+    // eslint-disable-next-line
     for (let key in props.record) {
         sum+=props.record[key].paid?props.record[key].paid:0
     };
