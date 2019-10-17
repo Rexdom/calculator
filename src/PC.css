@@ -62,9 +62,26 @@
         color: red;
       }
 
+      .tag {
+        display: flex;
+        flex-direction: row;
+        width:100%;
+        justify-content: center;
+      }
+
+      .tags {
+        width:40%;
+        margin:5px;
+      }
+
       .button {
+        width:25%;
+        margin:5px;
+      }
+
+      .submitButton {
         display:block;
-        width:80%;
+        width:70%;
         margin:5px;
       }
   
@@ -73,21 +90,36 @@
       justify-content: center;
       background-color: whitesmoke;
       border:solid 3px black;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .recordTitle {
+      margin:0;
     }
     
+    .search {
+      margin-bottom: 10px;
+      width:75%
+    }
+
+    .records {
+      width:100%;
+    }
+
     .record-box {
-      width:auto;
+      width:100%;
       display:flex;
-      justify-content: center;
       margin-bottom:5px;
+      justify-content: center;
     }
 
     .record {
-      display:flex;
       box-sizing: border-box;
+      position: relative;
       width:70%;
       font-weight:500;
-      justify-content: center;
       margin: solid 5px black;
     }
 
@@ -101,6 +133,13 @@
       margin: solid 5px black;
     }
     
+    .recordTag {
+      position: absolute;
+      left:0;
+      top:0;
+      font-size: 0.7em;
+    }
+
     .delete {
       font-weight:800;
       color:red;

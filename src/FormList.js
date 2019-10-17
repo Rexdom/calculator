@@ -6,6 +6,7 @@ import AddButton from './AddButton';
 
 function FormList(props) {
     const [record,setRecord]=useState({});
+    const [tag,setTag]=useState('');
     const [numOfRecord,setNumOfRecord]=useState(props.recordList.length);
 
     function addRecord(name,mp,mr) {
@@ -18,8 +19,10 @@ function FormList(props) {
         let paidSum=0;
         let respSum=0;
         Object.keys(record).forEach((user)=>{
-            paidSum+=parseInt(record[user].paid);
-            respSum+=parseInt(record[user].resp);
+            if (user!=='tag') {
+                paidSum+=parseInt(record[user].paid);
+                respSum+=parseInt(record[user].resp);
+            }
         });
         if (isNaN(paidSum)||isNaN(respSum)) {
             props.setError('empty');
@@ -33,13 +36,17 @@ function FormList(props) {
                 setNumOfRecord(props.recordList.length);
             }
             let refRecordList=[...props.recordList];
+            record.tag=tag;
             refRecordList[i]=record;
             Object.keys(record).forEach((user)=>{
-                refRecordList[i][user].paid = parseInt(record[user].paid);
-                refRecordList[i][user].resp = parseInt(record[user].resp);
-            })
+                if (user!=='tag') {
+                    refRecordList[i][user].paid = parseInt(record[user].paid);
+                    refRecordList[i][user].resp = parseInt(record[user].resp);
+                }
+            });
             props.setRecordList(refRecordList);
             setRecord({});
+            setTag('');
             props.setError(false);
         };
     };
@@ -47,6 +54,7 @@ function FormList(props) {
     function onModify(i) {
         setNumOfRecord(i);
         setRecord({...props.recordList[i]});
+        setTag(props.recordList[i].tag);
     };
 
     function onDelete(i) {
@@ -96,11 +104,21 @@ function FormList(props) {
                     )}
                 </ul>
                 <Error error={props.error}/>
-                <AddButton 
-                    listIndex={numOfRecord} 
-                    addNewRecord={addNewRecord}
-                />
-                <button className="button">Result</button>
+                <div className="tag">
+                    <input 
+                        className="tags" 
+                        type="text" 
+                        placeholder="tags(e.g lunch)"
+                        value={tag}
+                        onChange={e=>setTag(e.target.value)}
+                    />
+                    <AddButton 
+                        listIndex={numOfRecord}
+                        totalIndex={props.recordList.length}
+                        addNewRecord={addNewRecord}
+                    />
+                </div>
+                <button className="submitButton">Result</button>
             </form>
             <HistoryList 
                 list={props.recordList}
