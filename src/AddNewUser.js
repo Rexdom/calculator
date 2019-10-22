@@ -15,7 +15,7 @@ function AddNewUser(props) {
     };
     return (
         <>
-            <p className="description">Please add all the names of your groupmates below to begin:</p>
+            <p className="description">Please add the names of your groupmates below to begin:</p>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 

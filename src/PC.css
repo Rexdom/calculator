@@ -22,19 +22,22 @@
     color: black;
   }
   
+  .nav {
+    position: absolute;
+    top:0;
+  }
+
   .description {
     margin:0;
   }
 
   .content {
-    display:flex;
     margin: 5px;
     width: 100vw;
     justify-content: center;
   }
 
     .Form {
-      flex:5;
       display:flex;
       flex-direction: column;
       align-items: center;
@@ -81,12 +84,15 @@
 
       .submitButton {
         display:block;
-        width:70%;
+        width:65%;
         margin:5px;
       }
   
     aside {
-      flex: 2;
+      position: fixed;
+      right:0;
+      top:25%;
+      width:15vw;
       justify-content: center;
       background-color: whitesmoke;
       border:solid 3px black;
@@ -106,11 +112,16 @@
 
     .records {
       width:100%;
+      height:50vh;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
     }
 
     .record-box {
       width:100%;
+      height:40px;
       display:flex;
+      position: relative;
       margin-bottom:5px;
       justify-content: center;
     }
@@ -118,13 +129,13 @@
     .record {
       box-sizing: border-box;
       position: relative;
+      height:40px;
       width:70%;
       font-weight:500;
       margin: solid 5px black;
     }
 
     .record:hover {
-      font-weight:500;
       cursor:pointer;
     }
 
@@ -137,7 +148,15 @@
       position: absolute;
       left:0;
       top:0;
-      font-size: 0.7em;
+      font-size: calc(1px + 0.5vw);
+    }
+
+    .recordDetail {
+      position: absolute;
+      font-size: calc(5px + 0.5vw);
+      font-weight:700;
+      left:0%;
+      bottom:0;
     }
 
     .delete {

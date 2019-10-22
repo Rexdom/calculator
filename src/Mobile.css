@@ -1,11 +1,32 @@
 @media screen and (max-width: 720px) {  
   .content {
+    display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .Form li *{
     margin: 10px 5px;
     width:25vw;
+  }
+
+  .submitButton {
+    height:10vw;
+    width:10vw;
+  }
+
+  aside {
+    position: relative;
+    width:80vw;
+  }
+
+  .recordTag {
+    font-size: 0.7em;
+  }
+
+  .recordDetail {
+    font-size: 1em;
   }
 
 }

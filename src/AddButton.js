@@ -4,7 +4,7 @@ function AddButton(props) {
     const onClick = () => props.addNewRecord(props.listIndex)
     return (
         <input 
-            type="button" 
+            type="button"
             className="button" 
             value={props.totalIndex===props.listIndex?"Add":"Save"} 
             onClick={onClick}

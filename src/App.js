@@ -17,6 +17,14 @@ function App() {
     setUserList(preList=>[...preList,user])
   };
 
+  function onSave() {
+    localStorage.setItem()
+  }
+
+  function onClear() {
+    localStorage.setItem()
+  }
+
   function onResult(r) {
     setResult(r);
     setIsResult(true);
@@ -38,11 +46,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <div className="nav">
+          <input type="button" value="Save" onClick={onSave} />
+          <input type="button" value="Clear all" onClick={onClear}/>
+        </div>
         {isResult===true ? (
           <Result result={result} onBack={onBack}/>
         ) : (
           <>
             <AddNewUser onAdd={addUser} userList={userList} setError={onError}/>
+            {(userList.length!==0)?
             <FormList 
               list={userList} 
               onResult={onResult} 
@@ -50,7 +63,7 @@ function App() {
               error={error}
               setError={onError}
               setRecordList={changeRecordList}
-            />
+            />:<></>}
           </>
         )}
         

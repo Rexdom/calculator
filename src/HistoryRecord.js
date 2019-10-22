@@ -21,7 +21,7 @@ function HistoryRecord(props) {
             <div className={"record "+(props.selected?'selected':'')}
             onClick={onClick}>
                 <div className="recordTag">#{props.record.tag}</div>
-                total:{sum}
+                <div className="recordDetail">total : {sum}</div>
             </div>
             <div className="delete" onClick={onDelete}>x</div>
         </div>

@@ -63,10 +63,10 @@ function FormList(props) {
             return index !== i 
         }));
         setRecord({});
+        setTag('');
     };
 
     function onResult(e) {
-        e.preventDefault();
         var sum=0;
         const obj={};
         const result = (()=> {
@@ -86,7 +86,7 @@ function FormList(props) {
 
     return(
         <div className="content">
-            <form className="Form" onSubmit={onResult}>
+            <form className="Form">
                 <ul>
                     <li id="title">
                         <p>Name</p>
@@ -118,7 +118,7 @@ function FormList(props) {
                         addNewRecord={addNewRecord}
                     />
                 </div>
-                <button className="submitButton">Result</button>
+                <button className="submitButton" onClick={onResult}>Result</button>
             </form>
             <HistoryList 
                 list={props.recordList}
