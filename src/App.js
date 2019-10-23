@@ -7,8 +7,8 @@ import FormList from './FormList';
 import Result from './Result';
 
 function App() {
-  const [userList, setUserList] = useState([]);
-  const [recordList,setRecordList]=useState([]);
+  const [userList, setUserList] = useState(JSON.parse(localStorage.getItem('userList'))||[]);
+  const [recordList,setRecordList]=useState(JSON.parse(localStorage.getItem('recordList'))||[]);
   const [result, setResult] = useState({});
   const [isResult, setIsResult] = useState(false);
   const [error,setError]=useState('none');
@@ -18,11 +18,14 @@ function App() {
   };
 
   function onSave() {
-    localStorage.setItem()
+    localStorage.setItem('userList',JSON.stringify(userList));
+    localStorage.setItem('recordList',JSON.stringify(recordList));
   }
 
   function onClear() {
-    localStorage.setItem()
+    localStorage.clear();
+    setUserList([]);
+    setRecordList([]);
   }
 
   function onResult(r) {
