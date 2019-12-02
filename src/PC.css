@@ -7,11 +7,19 @@ html{
   }
 
   .cover-container {
-    height:35vh;
+    position: absolute;
+    top:50px;
   }
 
   .cover-container.cover {
     height:60vh;
+    top:50px;
+  }
+
+  .cover-container.cover:hover {
+    cursor: pointer;
+    animation: box 2.5s infinite;
+    -webkit-animation: box 2.5s infinite;
   }
 
   .cover {
@@ -21,28 +29,36 @@ html{
 
   .App-logo {
     position:relative;
-    height: 30vh;
-    border: 20px;
-    transition: width 1s, height 1s, transition 1s;
+    height:20vh;
+    transition: width 1s, height 1s;
   }
 
   .App-logo.cover {
-    height: 60vh;
+    height: 30vw;
     z-index:1;
   }
 
-  .App-logo.hide:hover {
+  .App-logo.cover:hover {
     cursor: pointer;
   }
   
+  @keyframes box{
+    0%, 40%, 80%, 100% {transform: translateY(0);}
+    20%, 60% {transform: translateY(-20px);}
+  }
+
+  @-webkit-keyframes box{
+    0%, 40%, 80%, 100% {-webkit-transform: translateY(0);}
+    20%, 60%{-webkit-transform: translateY(-20px);}
+  }
+
   .App-header {
-    margin-top:50px;
-    min-height: 100vh;
+    margin-top:calc(60px + 20vh);
     min-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: calc(10px + 1vmin);
     font-weight: 600;
     color: black;

@@ -53,8 +53,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className={isCover?"cover-container cover":"cover-container"}>
-          <img src={logo} className={isCover?"App-logo cover":"App-logo"} alt="logo" onClick={start}/>
+        <div className={isCover?"cover-container cover":"cover-container"} onClick={start}>
+          <img src={logo} className={isCover?"App-logo cover":"App-logo"} alt="logo"/>
           {isCover?(<p className='cover'>Click to start the App!</p>):<></>}
         </div>
         {!isCover?(
