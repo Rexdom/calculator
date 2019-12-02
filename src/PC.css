@@ -1,16 +1,42 @@
+html{
+  background-color: #f0f0f0;
+}
 
 .App {
     text-align: center;
   }
-  
+
+  .cover-container {
+    height:35vh;
+  }
+
+  .cover-container.cover {
+    height:60vh;
+  }
+
+  .cover {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
+    position:relative;
+    height: 30vh;
+    border: 20px;
+    transition: width 1s, height 1s, transition 1s;
+  }
+
+  .App-logo.cover {
+    height: 60vh;
+    z-index:1;
+  }
+
+  .App-logo.hide:hover {
+    cursor: pointer;
   }
   
   .App-header {
-    background-color: #f0f0f0;
+    margin-top:50px;
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
@@ -24,7 +50,7 @@
   
   .nav {
     position: absolute;
-    top:0;
+    top:20px;
   }
 
   .description {

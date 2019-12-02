@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import logo from './logo.svg';
+import logo from './logo.jpg';
 import './PC.css';
 import './Mobile.css';
 import AddNewUser from './AddNewUser';
@@ -10,9 +10,14 @@ function App() {
   const [userList, setUserList] = useState(JSON.parse(localStorage.getItem('userList'))||[]);
   const [recordList,setRecordList]=useState(JSON.parse(localStorage.getItem('recordList'))||[]);
   const [result, setResult] = useState({});
+  const [isCover, setIsCover] = useState(true);
   const [isResult, setIsResult] = useState(false);
   const [error,setError]=useState('none');
   
+  function start() {
+    setIsCover(false);
+  };
+
   function addUser(user) {
     setUserList(preList=>[...preList,user])
   };
@@ -48,28 +53,36 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div className="nav">
-          <input type="button" value="Save" onClick={onSave} />
-          <input type="button" value="Clear all" onClick={onClear}/>
+        <div className={isCover?"cover-container cover":"cover-container"}>
+          <img src={logo} className={isCover?"App-logo cover":"App-logo"} alt="logo" onClick={start}/>
+          {isCover?(<p className='cover'>Click to start the App!</p>):<></>}
         </div>
-        {isResult===true ? (
-          <Result result={result} onBack={onBack}/>
-        ) : (
+        {!isCover?(
           <>
-            <AddNewUser onAdd={addUser} userList={userList} setError={onError}/>
-            {(userList.length!==0)?
-            <FormList 
-              list={userList} 
-              onResult={onResult} 
-              recordList={recordList}
-              error={error}
-              setError={onError}
-              setRecordList={changeRecordList}
-            />:<></>}
+            <div className="nav">
+              <input type="button" value="Save" onClick={onSave} />
+              <input type="button" value="Clear all" onClick={onClear}/>
+            </div>
+            {isResult===true ? (
+              <Result result={result} onBack={onBack}/>
+            ) : (
+              <>
+                <AddNewUser onAdd={addUser} userList={userList} setError={onError}/>
+                {(userList.length!==0)?
+                <FormList 
+                  list={userList} 
+                  onResult={onResult} 
+                  recordList={recordList}
+                  error={error}
+                  setError={onError}
+                  setRecordList={changeRecordList}
+                />:<></>}
+               </>
+            )}
           </>
+        ):(
+          <></>
         )}
-        
       </header>
     </div>
   );
