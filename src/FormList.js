@@ -118,7 +118,7 @@ function FormList(props) {
                         addNewRecord={addNewRecord}
                     />
                 </div>
-                <input type='button' className="submitButton" value="Result" onClick={onResult} />
+                <div className="submitButton" onClick={onResult}>Result</div>
             </form>
             <HistoryList 
                 list={props.recordList}

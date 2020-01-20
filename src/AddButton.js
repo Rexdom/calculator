@@ -6,8 +6,8 @@ function AddButton(props) {
         props.addNewRecord(props.listIndex);
     }
     return (
-        <button 
-            class="button"
+        <button
+            className="button"
             type="submit"
             onClick={onClick}
         >{props.totalIndex===props.listIndex?"Add Record":"Save"}</button>

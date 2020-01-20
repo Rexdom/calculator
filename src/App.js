@@ -60,8 +60,8 @@ function App() {
         {!isCover?(
           <>
             <div className="nav">
-              <input type="button" value="Save" onClick={onSave} />
-              <input type="button" value="Clear all" onClick={onClear}/>
+              <div onClick={onSave}>Save</div>
+              <div onClick={onClear}>Clear All</div>
             </div>
             {isResult===true ? (
               <Result result={result} onBack={onBack}/>
