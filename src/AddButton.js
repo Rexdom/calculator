@@ -1,14 +1,16 @@
 import React from 'react';
 
 function AddButton(props) {
-    const onClick = () => props.addNewRecord(props.listIndex)
+    const onClick = (e) => {
+        e.preventDefault();
+        props.addNewRecord(props.listIndex);
+    }
     return (
-        <input 
-            type="button"
-            className="button" 
-            value={props.totalIndex===props.listIndex?"Add":"Save"} 
+        <button 
+            class="button"
+            type="submit"
             onClick={onClick}
-        />
+        >{props.totalIndex===props.listIndex?"Add Record":"Save"}</button>
     );
 }
 
