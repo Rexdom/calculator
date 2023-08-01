@@ -1,19 +1,19 @@
-@media screen and (max-width: 720px) {  
+@media screen {
   .content {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .Form li *{
+  .Form li * {
     margin: 10px 5px;
-    width:25vw;
+    width: 25vw;
   }
 
   aside {
     position: relative;
-    width:80vw;
+    width: 80vw;
   }
 
   .recordTag {
@@ -23,5 +23,4 @@
   .recordDetail {
     font-size: 1em;
   }
-
 }
